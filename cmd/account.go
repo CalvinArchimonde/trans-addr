@@ -30,12 +30,12 @@ func showWalletAddrCmd() *cobra.Command {
 
 			chainInfos, err := readChainInfoFromFile(fileName)
 			if err != nil {
-				println(err)
+				println(err.Error())
 				return
 			}
 
 			if err = listAddressOnChains(args[0], chainInfos); err != nil {
-				println(err)
+				println(err.Error())
 			}
 		},
 	}

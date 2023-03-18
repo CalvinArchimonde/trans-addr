@@ -5,5 +5,7 @@ import "github.com/calvinarchimonde/trans-addr/cmd"
 func main() {
 
 	rootCmd := cmd.NewRootCmd()
-	rootCmd.Execute()
+	if err := rootCmd.Execute(); err != nil {
+		println(err.Error())
+	}
 }
