@@ -1,0 +1,62 @@
+{
+    "CosmosHub": [
+        {
+            "chain_name": "cosmoshub",
+            "bech32_prefix": "cosmos"
+        },
+        {
+            "chain_name": "osmosis",
+            "bech32_prefix": "osmo"
+        },
+        {
+            "chain_name": "juno",
+            "bech32_prefix": "juno"
+        },
+        {
+            "chain_name": "iris",
+            "bech32_prefix": "iaa"
+        },
+        {
+            "chain_name": "stargate",
+            "bech32_prefix": "stars"
+        },
+        {
+            "chain_name": "uptick",
+            "bech32_prefix": "uptick"
+        },
+        {
+            "chain_name": "omniflix",
+            "bech32_prefix": "omniflix"
+        },
+        {
+            "chain_name": "Umee",
+            "bech32_prefix": "umee"
+        },
+        {
+            "chain_name": "SEI",
+            "bech32_prefix": "sei"
+        },
+        {
+            "chain_name":"Celestia",
+            "bech32_prefix": "celestia"
+        },
+        {
+            "chain_name":"lava",
+            "bech32_prefix": "lava@"
+        },
+        {
+            "chain_name":"initia",
+            "bech32_prefix":"init"
+        }
+    ],
+    "Dymsion": [
+        {
+            "chain_name": "Dymsion",
+            "bech32_prefix": "dym"
+        },
+        {
+            "chain_name": "Nim Network",
+            "bech32_prefix": "nim"
+        }
+    ]
+}
