@@ -24,10 +24,16 @@ type ChainInfo struct {
 	Bech32Prefix string `json:"bech32_prefix"`
 }
 
-func listAddressCmd(use string, f func(string, map[string][]ChainInfo) error) *cobra.Command {
+type ParamStruct struct {
+	Use   string
+	Short string
+	F     func(string, map[string][]ChainInfo) error
+}
+
+func listAddressCmd(p *ParamStruct) *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   use,
-		Short: "Show different network address",
+		Use:   p.Use,
+		Short: p.Short,
 		Args:  cobra.ExactArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			fileName, err := cmd.Flags().GetString(flag_chain_filename)
@@ -41,7 +47,7 @@ func listAddressCmd(use string, f func(string, map[string][]ChainInfo) error) *c
 				return
 			}
 
-			if err = f(args[0], chains); err != nil {
+			if err = p.F(args[0], chains); err != nil {
 				println(err.Error())
 			}
 		},
@@ -52,7 +58,12 @@ func listAddressCmd(use string, f func(string, map[string][]ChainInfo) error) *c
 }
 
 func listComosChainAddressCmd() *cobra.Command {
-	return listAddressCmd("cosmos [address]", listComosChainAddress)
+	p := &ParamStruct{
+		Use:   "cosmos [address]",
+		Short: "Show CosmosHub different network address",
+		F:     listComosChainAddress,
+	}
+	return listAddressCmd(p)
 }
 
 func listComosChainAddress(address string, chains map[string][]ChainInfo) error {
@@ -86,7 +97,12 @@ func listComosChainAddress(address string, chains map[string][]ChainInfo) error 
 }
 
 func listDymHubAddressCmd() *cobra.Command {
-	return listAddressCmd("dym [address]", listDymChainAddress)
+	p := &ParamStruct{
+		Use:   "dym [address]",
+		Short: "Show Dymsion different network address",
+		F:     listDymChainAddress,
+	}
+	return listAddressCmd(p)
 }
 
 func listDymChainAddress(address string, chains map[string][]ChainInfo) error {
