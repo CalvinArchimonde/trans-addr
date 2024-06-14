@@ -12,7 +12,6 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 
 	"github.com/spf13/cobra"
-	"golang.org/x/crypto/sha3"
 )
 
 const (
@@ -85,13 +84,6 @@ func listComosChainAddress(address string, chains map[string][]ChainInfo) error 
 			println("  -", info.ChainName, ":", addr)
 		}
 	}
-
-	hash := sha3.NewLegacyKeccak256()
-	hash.Write(converted)
-	hashedPubKey := hash.Sum(nil)
-	// Take the last 20 bytes to form the Ethereum address
-	ethAddress := "0x" + hex.EncodeToString(hashedPubKey[len(hashedPubKey)-20:])
-	println("ethereum address:", ethAddress)
 
 	return nil
 }
